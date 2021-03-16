@@ -1,0 +1,6 @@
+#netbeans
+/nbproject/
+
+# config.php
+/config/config.php
+
