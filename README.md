@@ -2,7 +2,9 @@
 #
 # Projet d'intranet pour le CF2M
 
-- copy and rename
+## Install
+
+copy and rename
 
         config/config.php.local
 
