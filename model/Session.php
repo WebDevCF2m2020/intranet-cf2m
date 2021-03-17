@@ -100,13 +100,21 @@ class Section extends MappingTableAbstract
     /**
      * Set the value of idlasession
      *
-     * @return  self
+     * @return  int
      */ 
-    public function setIdlasession(int $idlasession)
+    public function setIdlasession(int $idlasession):void
     {
-        $this->idlasession = $idlasession;
-
-        return $this;
+        $idlasession = (int)$idlasession;
+        //checking the value user is not equal 0 and is number
+        if(($id_user_room === 0) && (ctype_digit($idlasession))){  
+            trigger_error("This can not equal to zero!!",E_USER_NOTICE);
+            //checking is not empty
+        }else if(empty($idlasession)){
+            trigger_error('The session ID is not valide',E_USER_NOTICE);
+        }else{
+            $this->idlasession = $idlasession;
+        
+    }
     }
 
     /**
@@ -116,9 +124,18 @@ class Section extends MappingTableAbstract
      */ 
     public function setLenom(string $lenom):string
     {
-        $this->lenom = $lenom;
+        //checking the name for injection in db with strip_tags and trim
+        $lenom = strip_tags(trim($lenom));
+        // checking is not empty
+        if(empty($lenom)){
+            trigger_error("The name can't be empty",E_USER_NOTICE);
+            //checking lenght name is not superieur for 45caratcters
+        }else if (strlen($lenom) <= 45){
+            trigger_error("The lenght of your name cannot exceed 45 characters!!",E_USER_NOTICE);
+        }else{
 
-        return $this;
+        $this->lenom = $lenom;
+        }
     }
 
     /**
@@ -128,9 +145,19 @@ class Section extends MappingTableAbstract
      */ 
     public function setLacronyme(string $lacronyme)
     {
+        //checking for injection in db
+        $lacronyme = strip_tags(trim($lacronyme));
+        //checking is not empty
+        if(empty($lacronyme)){
+            trigger_error("The acronym can't be empty",E_USER_NOTICE);
+            //checking the lenght acronyme
+        }else if (strlen($lacronyme) <= 16){
+            trigger_error("The lenght of the acronym cannot exceed 16 characters!!",E_USER_NOTICE);
+        }else{
+
         $this->lacronyme = $lacronyme;
 
-        return $this;
+        }
     }
 
     /**
@@ -140,10 +167,14 @@ class Section extends MappingTableAbstract
      */ 
     public function setLenumero(int $lenumero)
     {
+        $lenumero= (int)$lenumero;
+        //checking numero is not empty and is number
+        if((empty($lenumero)) && (ctype_digit($lenumero))){  
+            trigger_error('The number is not correct');
+        }else{
         $this->lenumero = $lenumero;
-
-        return $this;
     }
+}
 
     /**
      * Set the value of letype
@@ -152,9 +183,16 @@ class Section extends MappingTableAbstract
      */ 
     public function setLetype(int $letype)
     {
+        $letype=(int)$letype;
+        //checking $letype is not superieur 2 and is number
+        if(($letype >2) && (ctype_digit($idlasession))){  
+            trigger_error('The type is not correct');
+            //checking is not empty
+        }else if(empty($letype)){
+            trigger_error('The type cannot empty!!!');
+        }else{
         $this->letype = $letype;
-
-        return $this;
+        }
     }
 
     /**
@@ -164,9 +202,16 @@ class Section extends MappingTableAbstract
      */ 
     public function setDebut(string $debut)
     {
-        $this->debut = $debut;
+        //preparation verification  with regex format date
+        $regex = preg_grep("/^(\d{4})-(\d{2})-([\d]{2})$/",[$debut]);
+        //checking is not empty
+        if(empty($regex)){
+            trigger_error("Invalid date format",E_USER_NOTICE);
+        }
+        else{
+            $this->debut = $debut;
+        }
 
-        return $this;
     }
 
     /**
@@ -176,21 +221,31 @@ class Section extends MappingTableAbstract
      */ 
     public function setFin(string $fin)
     {
+        //preparation with regex for format date
+        $regex = preg_grep("/^(\d{4})-(\d{2})-([\d]{2})$/",[$fin]);
+        //checking is not empty
+        if(empty($regex)){
+            trigger_error("Invalid date format",E_USER_NOTICE);
+        }
+        else{
         $this->fin = $fin;
-
-        return $this;
+        }
     }
 
     /**
      * Set the value of lafiliere_idlafiliere
      *
-     * @return  self
+     * @return  int
      */ 
-    public function setLafiliere_idlafiliere(int $lafiliere_idlafiliere)
+    public function setLafiliere_idlafiliere(int $lafiliere_idlafiliere):void
     {
+        $lafiliere_idlafiliere = (int)$lafiliere_idlafiliere;
+        //checking is not empty and is number
+        if(empty($lafiliere_idlafiliere) && ctype_digit($lafiliere_idlafiliere)){
+            trigger_error("The foreign key session is not valid",E_USER_NOTICE);
+        }else{
         $this->lafiliere_idlafiliere = $lafiliere_idlafiliere;
-
-        return $this;
+        }
     }
 
     /**
@@ -200,8 +255,12 @@ class Section extends MappingTableAbstract
      */ 
     public function setActif(int $actif)
     {
+        $actif= (int)$actif;
+        //checking is not empty
+        if(empty($actif)){
+            trigger_error('The actif session cannot empty!!!',E_USER_NOTICE);
+        }
         $this->actif = $actif;
 
-        return $this;
-    }
+    }//fermetur du setter actif
 }// femeture de la classe
