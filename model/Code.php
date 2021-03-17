@@ -1,6 +1,6 @@
 <?php
 
-class Section extends MappingTableAbstract
+class Code extends MappingTableAbstract
 {//ouverture de la classe
     // propriete de la table Session
     protected int $idlecode;
