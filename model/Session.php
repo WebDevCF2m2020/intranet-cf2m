@@ -162,7 +162,7 @@ class Section extends MappingTableAbstract
     {
         $lenumero= (int)$lenumero;
         //checking numero is empty
-        if(empty($lenumero){  
+        if(empty($lenumero)){  
             trigger_error('The number is not correct');
         }else{
             $this->lenumero = $lenumero;
@@ -256,5 +256,5 @@ class Section extends MappingTableAbstract
             $this->actif = $actif;
         }
 
-    }//fermetur du setter actif
+    }//fermeture du setter actif
 }// femeture de la classe
