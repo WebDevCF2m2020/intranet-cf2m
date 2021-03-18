@@ -1,6 +1,9 @@
 #netbeans
 /nbproject/
 
+#jetbrains
+.idea
+
 # config.php
 /config/config.php
 
