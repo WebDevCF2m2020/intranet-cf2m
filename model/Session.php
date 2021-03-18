@@ -13,12 +13,6 @@ class Section extends MappingTableAbstract
     protected int $lafiliere_idlafiliere;
     protected int $actif;
 
-    //constructor
-    public function __construct(array $tab)
-    {
-        $this->hydrate($tab);
-    }
-
     //Getters
 
 
