@@ -14,15 +14,15 @@ class Droit extends MappingTableAbstract
         $this->hydrate($tab);
     }
 
-//Getters
+    //Getters
 
 
     /**
-     * Get the value of idlecode
+     * Get the value of idledroit
      */ 
-    public function getidLecode(): int
+    public function getidLedroit(): int
     {
-        return $this->idlecode;
+        return $this->idledroit;
     }
 
     /**
@@ -50,4 +50,86 @@ class Droit extends MappingTableAbstract
     }
 
 
+    //SETTER
+    
+
+    /**
+     * Set the value of idlecode
+     *
+     * @return  int
+     */ 
+    public function setidLedroit(int $idledroit):void
+    {
+        $idledroit = (int)$idledroit;
+        //checking the value user is not equal 0 and is number
+        if(($id_user_room === 0) && (ctype_digit($idledroit))){  
+            trigger_error("This can not equal to zero!!",E_USER_NOTICE);
+            //checking is not empty
+        }else if(empty($idlecode)){
+            trigger_error('The session ID is not valide',E_USER_NOTICE);
+        }else{
+            $this->idledroit = $idledroit;
+        
+    }
+    }
+
+    /**
+     * Set the value of lintitule
+     *
+     * @return  self
+     */ 
+    public function setLintitule(string $lintitule):string
+    {
+        //checking the name for injection in db with strip_tags and trim
+        $lintitule = strip_tags(trim($lintitule));
+        // checking is not empty
+        if(empty($lintitule)){
+            trigger_error("The name can't be empty",E_USER_NOTICE);
+            //checking lenght name is not superieur for 60 caratcters
+        }else if (strlen($lintitule) <= 60){
+            trigger_error("The lenght of your name cannot exceed 60 characters!!",E_USER_NOTICE);
+        }else{
+
+        $this->lintitule = $lintitule;
+        }
+    }
+
+    /**
+     * Set the value of Ladescription
+     *
+     * @return  self
+     */ 
+    public function setLadescription(string $Ladescription):string
+    {
+        //checking for injection in db
+        $Ladescription = strip_tags(trim($Ladescription));
+        //checking is not empty
+        if(empty($Ladescription)){
+            trigger_error("The acronym can't be empty",E_USER_NOTICE);
+            //checking the lenght acronyme
+        }else if (strlen($Ladescription) <= 300){
+            trigger_error("The lenght of the acronym cannot exceed 300 characters!!",E_USER_NOTICE);
+        }else{
+
+        $this->Ladescription = $Ladescription;
+
+        }
+    }
+
+    
+    /**
+     * Set the value of actif
+     *
+     * @return  self
+     */ 
+    public function setActif(int $actif)
+    {
+        $actif= (int)$actif;
+        //checking is empty
+        if(empty($actif)){
+            trigger_error('The actif session cannot empty!!!',E_USER_NOTICE);
+        }else{
+            $this->actif = $actif;
+        }
+    }
 }
