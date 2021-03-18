@@ -8,9 +8,13 @@ class Droit extends MappingTableAbstract
     protected string $ladescription;
     protected int $actif;
 
+    //constructor
+    public function __construct(array $tab)
+    {
+        $this->hydrate($tab);
+    }
 
 
 
 
-    
 }
