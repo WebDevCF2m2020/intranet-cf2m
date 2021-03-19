@@ -11,6 +11,9 @@ nbproject/
 
 ### Configuration ###
 
+#jetbrains
+.idea
+
 # config.php
 config/config.php
 config/config.php.dev
