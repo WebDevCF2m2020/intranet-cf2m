@@ -71,7 +71,7 @@ class Code extends MappingTableAbstract
         if(empty($lintitule)){
             trigger_error("The name can't be empty",E_USER_NOTICE);
             //checking lenght name is not superieur for 45caratcters
-        }else if (strlen($lintitule) >= 5){
+        }else if (strlen($lintitule) > 5){
             trigger_error("The lenght of your name cannot exceed 5 characters!!",E_USER_NOTICE);
         }else{
 
@@ -92,7 +92,7 @@ class Code extends MappingTableAbstract
         if(empty($ladescription)){
             trigger_error("The acronym can't be empty",E_USER_NOTICE);
             //checking the lenght acronyme
-        }else if (strlen($ladescription) >= 45){
+        }else if (strlen($ladescription) > 45){
             trigger_error("The lenght of the acronym cannot exceed 45 characters!!",E_USER_NOTICE);
         }else{
 
