@@ -97,16 +97,16 @@ class Droit extends MappingTableAbstract
     public function setLadescription(string $Ladescription):string
     {
         //checking for injection in db
-        $Ladescription = strip_tags(trim($Ladescription));
+        $ladescription = strip_tags(trim($ladescription));
         //checking is not empty
-        if(empty($Ladescription)){
+        if(empty($ladescription)){
             trigger_error("The acronym can't be empty",E_USER_NOTICE);
             //checking the lenght acronyme
-        }else if (strlen($Ladescription) <= 300){
+        }else if (strlen($ladescription) <= 300){
             trigger_error("The lenght of the acronym cannot exceed 300 characters!!",E_USER_NOTICE);
         }else{
 
-        $this->Ladescription = $Ladescription;
+        $this->Ladescription = $ladescription;
 
         }
     }
