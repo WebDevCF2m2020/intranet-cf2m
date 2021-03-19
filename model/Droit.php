@@ -33,7 +33,7 @@ class Droit extends MappingTableAbstract
      */ 
     public function getLadescription():string
     {
-        return $this->Ladescription;
+        return $this->ladescription;
     }
 
     /**
@@ -80,8 +80,8 @@ class Droit extends MappingTableAbstract
         // checking is not empty
         if(empty($lintitule)){
             trigger_error("The name can't be empty",E_USER_NOTICE);
-            //checking lenght name is not superieur for 60 caratcters
-        }else if (strlen($lintitule) >= 5){
+            //checking lenght name is not superieur for 5 caratcters
+        }else if (strlen($lintitule) > 5){
             trigger_error("The lenght of your name cannot exceed 60 characters!!",E_USER_NOTICE);
         }else{
 
@@ -94,7 +94,7 @@ class Droit extends MappingTableAbstract
      *
      * @return  self
      */ 
-    public function setLadescription(string $Ladescription):string
+    public function setLadescription(string $ladescription):string
     {
         //checking for injection in db
         $ladescription = strip_tags(trim($ladescription));
@@ -102,7 +102,7 @@ class Droit extends MappingTableAbstract
         if(empty($ladescription)){
             trigger_error("The acronym can't be empty",E_USER_NOTICE);
             //checking the lenght acronyme
-        }else if (strlen($ladescription) >= 300){
+        }else if (strlen($ladescription) > 300){
             trigger_error("The lenght of the acronym cannot exceed 300 characters!!",E_USER_NOTICE);
         }else{
 
@@ -117,7 +117,7 @@ class Droit extends MappingTableAbstract
      *
      * @return  self
      */ 
-    public function setActif(int $actif)
+    public function setActif(int $actif):void
     {
         $actif= (int)$actif;
         //checking is empty
