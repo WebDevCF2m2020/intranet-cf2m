@@ -107,13 +107,13 @@ class Suivi extends MappingTableAbstract
 
     public function setDate(string $date): void
     {
-        $verifDate = new DateTime($date)
+        $verifDate = new DateTime($date);
         //checking is not empty
         if (empty($date)){  
             trigger_error("The date is not valide",E_USER_NOTICE);
         //cheking the format
         } else if (!is_object($verifDate)){
-            trigger_error("The format is not valide",E_USER_NOTICE)
+            trigger_error("The format is not valide",E_USER_NOTICE);
         } else {
             $this->date = $date;
         }
