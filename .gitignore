@@ -1,6 +1,21 @@
+### IDE ###
+
 #netbeans
-/nbproject/
+nbproject/
+
+# PHPStorm
+.idea
+
+# VisualStudioCode
+.vscode
+
+### Configuration ###
 
 # config.php
-/config/config.php
+config/config.php
+config/config.php.dev
 
+### Dependencies ###
+
+# composer vendor
+vendor/
