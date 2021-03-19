@@ -81,7 +81,7 @@ class Droit extends MappingTableAbstract
         if(empty($lintitule)){
             trigger_error("The name can't be empty",E_USER_NOTICE);
             //checking lenght name is not superieur for 60 caratcters
-        }else if (strlen($lintitule) <= 60){
+        }else if (strlen($lintitule) >= 5){
             trigger_error("The lenght of your name cannot exceed 60 characters!!",E_USER_NOTICE);
         }else{
 
