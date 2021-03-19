@@ -14,7 +14,6 @@ class Section extends MappingTableAbstract
     protected int $lafiliere_idlafiliere;
     protected int $actif;
 
-
     //Getters
 
 
