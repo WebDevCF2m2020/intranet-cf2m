@@ -1,6 +1,6 @@
 <?php
 
-class Section extends MappingTableAbstract
+class Session extends MappingTableAbstract
 {
     
     // propriete de la table Session
