@@ -102,11 +102,11 @@ class Droit extends MappingTableAbstract
         if(empty($ladescription)){
             trigger_error("The acronym can't be empty",E_USER_NOTICE);
             //checking the lenght acronyme
-        }else if (strlen($ladescription) <= 300){
+        }else if (strlen($ladescription) >= 300){
             trigger_error("The lenght of the acronym cannot exceed 300 characters!!",E_USER_NOTICE);
         }else{
 
-        $this->Ladescription = $ladescription;
+        $this->ladescription = $ladescription;
 
         }
     }
