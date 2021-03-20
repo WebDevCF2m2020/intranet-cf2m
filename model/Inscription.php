@@ -11,12 +11,7 @@ class Inscription extends MappingTableAbstract
     protected int $lasession_idlasession;
     protected int $actif=1;
 
-    //Constructor 
-
-    public function __construct(array $tab)
-    {
-        $this->hydrate($tab);
-    }
+    
 
     //Getters 
 
