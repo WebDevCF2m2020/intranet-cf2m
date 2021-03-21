@@ -7,11 +7,6 @@ class Code extends MappingTableAbstract
     protected string $lintitule;
     protected string $ladescription;
 
-    //constructor
-    public function __construct(array $tab)
-    {
-        $this->hydrate($tab);
-    }
 
     //Getters
 
@@ -37,7 +32,7 @@ class Code extends MappingTableAbstract
      */ 
     public function getLadescription():string
     {
-        return $this->Ladescription;
+        return $this->ladescription;
     }
 
     //SETTER
@@ -76,7 +71,7 @@ class Code extends MappingTableAbstract
         if(empty($lintitule)){
             trigger_error("The name can't be empty",E_USER_NOTICE);
             //checking lenght name is not superieur for 45caratcters
-        }else if (strlen($lintitule) <= 5){
+        }else if (strlen($lintitule) > 5){
             trigger_error("The lenght of your name cannot exceed 5 characters!!",E_USER_NOTICE);
         }else{
 
@@ -89,19 +84,19 @@ class Code extends MappingTableAbstract
      *
      * @return  self
      */ 
-    public function setLadescription(string $Ladescription):string
+    public function setLadescription(string $ladescription):string
     {
         //checking for injection in db
-        $Ladescription = strip_tags(trim($Ladescription));
+        $ladescription = strip_tags(trim($ladescription));
         //checking is not empty
-        if(empty($Ladescription)){
+        if(empty($ladescription)){
             trigger_error("The acronym can't be empty",E_USER_NOTICE);
             //checking the lenght acronyme
-        }else if (strlen($Ladescription) <= 45){
+        }else if (strlen($ladescription) > 45){
             trigger_error("The lenght of the acronym cannot exceed 45 characters!!",E_USER_NOTICE);
         }else{
 
-        $this->Ladescription = $Ladescription;
+        $this->ladescription = $ladescription;
 
         }
     }
