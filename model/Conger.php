@@ -86,20 +86,16 @@ class Conger extends MappingTableAbstract
      */ 
     public function setLaperiode(int $laperiode):int
     {
-        //checking for injection in db
-        $laperiode = strip_tags(trim($laperiode));
-        //checking is not empty
-        if(empty($laperiode)){
-            trigger_error("The acronym can't be empty",E_USER_NOTICE);
-            //checking the lenght acronyme
-        }else if (strlen($laperiode) > 45){
-            trigger_error("The lenght of the acronym cannot exceed 45 characters!!",E_USER_NOTICE);
-        }else{
+        $laperiode = (int) $laperiode;
+            //Checking if is zero value.  
+            if(($laperiode === 0) && (ctype_digit($laperiode))){  
+                trigger_error("This can not equal to zero!!",E_USER_NOTICE);   
+            }elseif(empty($laperiode)){
+                //Checking if not empty.
+                trigger_error("This can not be empty!!",E_USER_NOTICE); 
+            }else{
+                $this->laperiode = $laperiode;                    
+            }
 
-        $this->ladescription = $ladescription;
-
-        }
     }
-
-    
 }// femeture de la classe
