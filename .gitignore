@@ -9,6 +9,9 @@ nbproject/
 # VisualStudioCode
 .vscode
 
+# Mac
+.DS_Store
+
 ### Configuration ###
 
 # config.php
