@@ -12,7 +12,25 @@ class Presence extends MappingTableAbstract
     
         //Getters 
         public function getIdlapresence():int {
-            return this->idlapresence;
+            return $this->idlapresence;
+        }
+        public function getAmpm():int {
+            return $this->ampm;
+        }
+        public function getDate():string{
+            return $this->date;
+        }
+        public function getHeuredebut():string {
+            return $this->heuredebut;
+        }
+        public function getHeurefin(): string {
+            return $this->heurefin;
+        }
+        public function getLecode_idlecode():int {
+            return $this->lecode_idlecode;
+        }
+        public function getLinscription_idlinscription():int {
+            return $this->linscription_idlinscription;
         }
         //Setters
         
