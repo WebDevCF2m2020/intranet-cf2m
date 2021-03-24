@@ -42,11 +42,17 @@ class Presence extends MappingTableAbstract
             }
             
         }
+        public function setAmpm(int $ampm): void {
+            //Placer ici une condition si l'argument est différent des 2 valeurs possibles(matin ou après midi) signifier une erreur à l'utilisateur
+            if(!$ampm===0||$ampm===1){
+            //Vérifier avec les collègues et superviseur si ce type de message d'erreur et viable et si ma vérification est la bonne
+                trigger_error("Les seules valeurs possibles sont matin ou après-midi, choisissez l'une des 2",E_USER_NOTICE);
+            }
+            //Sinon modier la valeur de ampm avec l'argument
+            else{
+                $this->ampm=$ampm;
+            }
+            
+        }
         
 }
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
