@@ -33,9 +33,17 @@ class Presence extends MappingTableAbstract
             return $this->linscription_idlinscription;
         }
         //Setters
+        public function setIdlapresence(int $idlapresence):void {
+            if(empty($idlapresence)){
+                trigger_error("Votre id ne peut être vide",E_USER_NOTICE);
+            }
+            else{
+                $this->idlapresence=$idlapresence;
+            }
+            
+        }
         
 }
-
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
