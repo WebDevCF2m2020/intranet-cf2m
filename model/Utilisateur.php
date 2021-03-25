@@ -68,7 +68,7 @@ class Utilisateur extends MappingTableAbstract
             && strlen($le_mot_de_passe < 100)) {
             $this->le_mot_de_passe = strval(password_hash($le_mot_de_passe, PASSWORD_DEFAULT));
         } else {
-            throw new \RuntimeException(`Le format du champ "Mot de passe" n'est pas valable`);
+            trigger_error(`Le format du champ "Mot de passe" n'est pas valable`);
         }
     }
 
@@ -79,7 +79,7 @@ class Utilisateur extends MappingTableAbstract
             && strlen($le_nom) <= 45) {
             $this->le_nom = $le_nom;
         } else {
-            throw new \RuntimeException(`Le format du champ "Nom" n'est pas valable`);
+            trigger_error(`Le format du champ "Nom" n'est pas valable`);
         }
     }
 
@@ -90,7 +90,7 @@ class Utilisateur extends MappingTableAbstract
             && strlen($le_prenom) <= 45) {
             $this->le_prenom = $le_prenom;
         } else {
-            throw new \RuntimeException(`Le format du champ "Prénom" n'est pas valable`);
+            trigger_error(`Le format du champ "Prénom" n'est pas valable`);
         }
     }
 
@@ -108,7 +108,7 @@ class Utilisateur extends MappingTableAbstract
             && (filter_var($l_email, FILTER_VALIDATE_EMAIL))) {
             $this->l_email = $l_email;
         } else {
-            throw new \RuntimeException(`Le format du champ "E-mail" n'est pas valable`);
+            trigger_error(`Le format du champ "E-mail" n'est pas valable`);
         }
     }
 
