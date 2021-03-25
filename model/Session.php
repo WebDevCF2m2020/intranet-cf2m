@@ -1,6 +1,6 @@
 <?php
 
-class Section extends MappingTableAbstract
+class Session extends MappingTableAbstract
 {
     
     // propriete de la table Session
@@ -13,7 +13,6 @@ class Section extends MappingTableAbstract
     protected string $fin;
     protected int $lafiliere_idlafiliere;
     protected int $actif;
-
 
     //Getters
 

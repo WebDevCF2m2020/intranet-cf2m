@@ -11,3 +11,13 @@ copy and rename
 to
 
         config/config.php
+
+## Import DB
+
+with this files:
+
+        DB/intranetv7_structure.sql
+
+and import the datas:
+
+        DB/intranetv7_donnees.sql
