@@ -9,7 +9,13 @@ nbproject/
 # VisualStudioCode
 .vscode
 
+# Mac
+.DS_Store
+
 ### Configuration ###
+
+#jetbrains
+.idea
 
 # config.php
 config/config.php
