@@ -54,5 +54,15 @@ class Presence extends MappingTableAbstract
             }
             
         }
+        public function setDate(int $date):void {
+        $regex = preg_grep("/^(\d{4})-(\d{2})-([\d]{2})$/",[$date]);
+        if(empty($regex)){
+            trigger_error("Format de date non valide",E_USER_NOTICE);
+        }
+        else{
+            $this->date = $theNewsDate;
+        }
+            
+        }
         
 }
