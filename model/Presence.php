@@ -66,12 +66,10 @@ class Presence extends MappingTableAbstract
             
         }
         public function setHeuredebut(string $heuredebut): void {
-            //ATENTION une condition avec une expression régulière serait de bon aloi pour vérifier que le format corresponde
             $this->heuredebut=$heuredebut;
         }
         
         public function setHeurefin(string $heurefin):void{
-            //ATENTION une condition avec une expression régulière serait de bon aloi pour vérifier que le format corresponde
             $this->heurefin=$heurefin;
         }
         
