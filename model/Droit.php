@@ -121,10 +121,10 @@ class Droit extends MappingTableAbstract
     {
         $actif= (int)$actif;
         //checking is empty
-        if(empty($actif)){
-            trigger_error('The actif session cannot empty!!!',E_USER_NOTICE);
-        }else{
+        if(isset($actif)&& in_array($actif,[0,1])){
             $this->actif = $actif;
+        }else{
+            trigger_error('The actif session cannot empty!!!',E_USER_NOTICE);
         }
     }
 }
