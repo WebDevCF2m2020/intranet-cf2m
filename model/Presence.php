@@ -55,14 +55,33 @@ class Presence extends MappingTableAbstract
             
         }
         public function setDate(int $date):void {
+        //Vérifier que la date soit saisie et envoyée dans un format correct de date
         $regex = preg_grep("/^(\d{4})-(\d{2})-([\d]{2})$/",[$date]);
         if(empty($regex)){
             trigger_error("Format de date non valide",E_USER_NOTICE);
         }
         else{
-            $this->date = $theNewsDate;
+            $this->date = $date;
         }
             
+        }
+        public function setHeuredebut(string $heuredebut): void {
+            //ATENTION une condition avec une expression régulière serait de bon aloi pour vérifier que le format corresponde
+            $this->heuredebut=$heuredebut;
+        }
+        
+        public function setHeurefin(string $heurefin):void{
+            //ATENTION une condition avec une expression régulière serait de bon aloi pour vérifier que le format corresponde
+            $this->heurefin=$heurefin;
+        }
+        
+        public function setLecode_idlecode(int $lecode_idlecode):void {
+            if(empty($lecode_idlecode)){
+                trigger_error("Votre id ne peut être vide",E_USER_NOTICE);
+            }
+            else{
+            $this->lecode_idlecode=$lecode_idlecode;
+        }
         }
         
 }
