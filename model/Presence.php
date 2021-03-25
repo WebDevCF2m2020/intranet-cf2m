@@ -83,5 +83,13 @@ class Presence extends MappingTableAbstract
             $this->lecode_idlecode=$lecode_idlecode;
         }
         }
+        public function setLinscription_idlinscription(int $linscription_idlinscription): void{
+            if(empty($linscription_idlinscription)){
+                trigger_error("Votre id ne peut être vide",E_USER_NOTICE);
+            }
+            else{
+                $this->linscription_idlinscription=$linscription_idlinscription;
+            }
+        }
         
 }
