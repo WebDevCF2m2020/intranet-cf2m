@@ -1,7 +1,7 @@
 <?php
 
 class Session extends MappingTableAbstract
-{//ouverture de la classe
+{
     // propriete de la table Session
     protected int $idlasession;
     protected string $lenom;
@@ -12,12 +12,6 @@ class Session extends MappingTableAbstract
     protected string $fin;
     protected int $lafiliere_idlafiliere;
     protected int $actif;
-
-    //constructor
-    public function __construct(array $tab)
-    {
-        $this->hydrate($tab);
-    }
 
     //Getters
 
@@ -105,16 +99,13 @@ class Session extends MappingTableAbstract
     public function setIdlasession(int $idlasession):void
     {
         $idlasession = (int)$idlasession;
-        //checking the value user is not equal 0 and is number
-        if(($id_user_room === 0) && (ctype_digit($idlasession))){  
-            trigger_error("This can not equal to zero!!",E_USER_NOTICE);
+        //checking the value user is not equal 0 after conversion
+        if(($idlasession === 0)){  
+            trigger_error("The session ID is not valide",E_USER_NOTICE);
             //checking is not empty
-        }else if(empty($idlasession)){
-            trigger_error('The session ID is not valide',E_USER_NOTICE);
         }else{
             $this->idlasession = $idlasession;
-        
-    }
+        }
     }
 
     /**
@@ -126,15 +117,15 @@ class Session extends MappingTableAbstract
     {
         //checking the name for injection in db with strip_tags and trim
         $lenom = strip_tags(trim($lenom));
-        // checking is not empty
+        // checking is  empty
         if(empty($lenom)){
             trigger_error("The name can't be empty",E_USER_NOTICE);
             //checking lenght name is not superieur for 45caratcters
-        }else if (strlen($lenom) <= 45){
+        }else if (strlen($lenom) > 45){
             trigger_error("The lenght of your name cannot exceed 45 characters!!",E_USER_NOTICE);
         }else{
 
-        $this->lenom = $lenom;
+            $this->lenom = $lenom;
         }
     }
 
@@ -147,15 +138,15 @@ class Session extends MappingTableAbstract
     {
         //checking for injection in db
         $lacronyme = strip_tags(trim($lacronyme));
-        //checking is not empty
+        //checking is empty
         if(empty($lacronyme)){
             trigger_error("The acronym can't be empty",E_USER_NOTICE);
             //checking the lenght acronyme
-        }else if (strlen($lacronyme) <= 16){
+        }else if (strlen($lacronyme) > 16){
             trigger_error("The lenght of the acronym cannot exceed 16 characters!!",E_USER_NOTICE);
         }else{
 
-        $this->lacronyme = $lacronyme;
+            $this->lacronyme = $lacronyme;
 
         }
     }
@@ -168,13 +159,13 @@ class Session extends MappingTableAbstract
     public function setLenumero(int $lenumero)
     {
         $lenumero= (int)$lenumero;
-        //checking numero is not empty and is number
-        if((empty($lenumero)) && (ctype_digit($lenumero))){  
+        //checking numero is empty
+        if(empty($lenumero)){  
             trigger_error('The number is not correct');
         }else{
-        $this->lenumero = $lenumero;
+            $this->lenumero = $lenumero;
+        }
     }
-}
 
     /**
      * Set the value of letype
@@ -184,14 +175,14 @@ class Session extends MappingTableAbstract
     public function setLetype(int $letype)
     {
         $letype=(int)$letype;
-        //checking $letype is not superieur 2 and is number
-        if(($letype >2) && (ctype_digit($idlasession))){  
+        //checking $letype is not superieur 2
+        if($letype >2){  
             trigger_error('The type is not correct');
             //checking is not empty
         }else if(empty($letype)){
             trigger_error('The type cannot empty!!!');
         }else{
-        $this->letype = $letype;
+            $this->letype = $letype;
         }
     }
 
@@ -228,7 +219,7 @@ class Session extends MappingTableAbstract
             trigger_error("Invalid date format",E_USER_NOTICE);
         }
         else{
-        $this->fin = $fin;
+            $this->fin = $fin;
         }
     }
 
@@ -240,11 +231,11 @@ class Session extends MappingTableAbstract
     public function setLafiliere_idlafiliere(int $lafiliere_idlafiliere):void
     {
         $lafiliere_idlafiliere = (int)$lafiliere_idlafiliere;
-        //checking is not empty and is number
-        if(empty($lafiliere_idlafiliere) && ctype_digit($lafiliere_idlafiliere)){
+        //checking is empty
+        if(empty($lafiliere_idlafiliere)){
             trigger_error("The foreign key session is not valid",E_USER_NOTICE);
         }else{
-        $this->lafiliere_idlafiliere = $lafiliere_idlafiliere;
+            $this->lafiliere_idlafiliere = $lafiliere_idlafiliere;
         }
     }
 
@@ -256,11 +247,12 @@ class Session extends MappingTableAbstract
     public function setActif(int $actif)
     {
         $actif= (int)$actif;
-        //checking is not empty
-        if(empty($actif)){
+        //checking is empty
+        if(empty($actif)&& in_array($actif,[0,1])){
+            $this->actif = $actif;
+        }else{
             trigger_error('The actif session cannot empty!!!',E_USER_NOTICE);
         }
-        $this->actif = $actif;
 
-    }//fermetur du setter actif
+    }//fermeture du setter actif
 }// femeture de la classe
