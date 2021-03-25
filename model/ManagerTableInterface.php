@@ -5,7 +5,7 @@ interface ManagerTableInterface {
 	
 	public function selectAllActif():array;	
 	public function selectAllNonActif():array;	
-    public function selectAll():array;
+	public function selectAll():array;
 	
 	public function selectOneActif():array;
 	public function selectOneNonActif():array;	
