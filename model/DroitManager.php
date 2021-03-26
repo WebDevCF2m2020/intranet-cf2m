@@ -6,6 +6,11 @@ class DroitManager extends ManagerTableAbstract implements ManagerTableInterface
     public function selectAll(): array {
         $sql = "SELECT * FROM ledroit;";
         $query = $this->db->query($sql);
-        
+        // if we have at least one result
+        if($query->rowCount()){
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        }
+        // else an empty array
+        return [];
     }
 }
