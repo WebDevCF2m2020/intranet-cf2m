@@ -6,6 +6,11 @@ class SessionManager extends ManagerTableAbstract implements ManagerTableInterfa
     public function selectAll(): array {
         $sql = "SELECT * FROM lasession;";
         $query = $this->db->query($sql);
-        
+        // if we have at least one result
+        if($query->rowCount()){
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        }
+        // else an empty array
+        return [];
     }
 }
