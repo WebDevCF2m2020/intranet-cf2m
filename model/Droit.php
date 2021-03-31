@@ -82,7 +82,7 @@ class Droit extends MappingTableAbstract
             trigger_error("The name can't be empty",E_USER_NOTICE);
             //checking lenght name is not superieur for 5 caratcters
         }else if (strlen($lintitule) > 5){
-            trigger_error("The lenght of your name cannot exceed 60 characters!!",E_USER_NOTICE);
+            trigger_error("The lenght of your name cannot exceed 5 characters!!",E_USER_NOTICE);
         }else{
 
         $this->lintitule = $lintitule;
@@ -98,7 +98,7 @@ class Droit extends MappingTableAbstract
     {
         //checking for injection in db
         $ladescription = strip_tags(trim($ladescription));
-        //checking is not empty
+        //checking is empty
         if(empty($ladescription)){
             trigger_error("The acronym can't be empty",E_USER_NOTICE);
             //checking the lenght acronyme
@@ -121,10 +121,10 @@ class Droit extends MappingTableAbstract
     {
         $actif= (int)$actif;
         //checking is empty
-        if(empty($actif)){
-            trigger_error('The actif session cannot empty!!!',E_USER_NOTICE);
-        }else{
+        if(isset($actif)&& in_array($actif,[0,1])){
             $this->actif = $actif;
+        }else{
+            trigger_error('The actif session cannot empty!!!',E_USER_NOTICE);
         }
     }
 }
