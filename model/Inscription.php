@@ -159,8 +159,8 @@ class Inscription extends MappingTableAbstract
     public function setActif(int $actif):void
     {
         $actif = (int) $actif;
-        if(empty($actif)){
-            trigger_error("Le champ actif ne peut être vide",E_USER_NOTICE);
+        if($actif < 0 || $actif > 1){
+            trigger_error("Le champ actif doit être soit 0, soit 1",E_USER_NOTICE);
         }
         else{
         $this->actif = $actif;
