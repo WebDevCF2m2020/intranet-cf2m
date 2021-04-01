@@ -2,7 +2,6 @@
 
 class Session extends MappingTableAbstract
 {
-    
     // propriete de la table Session
     protected int $idlasession;
     protected string $lenom;
@@ -249,10 +248,10 @@ class Session extends MappingTableAbstract
     {
         $actif= (int)$actif;
         //checking is empty
-        if(empty($actif)){
-            trigger_error('The actif session cannot empty!!!',E_USER_NOTICE);
-        }else{
+        if(empty($actif)&& in_array($actif,[0,1])){
             $this->actif = $actif;
+        }else{
+            trigger_error('The actif session cannot empty!!!',E_USER_NOTICE);
         }
 
     }//fermeture du setter actif
